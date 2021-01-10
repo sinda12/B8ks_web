@@ -7,7 +7,48 @@ import javax.persistence.*;
 public class Cart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private Integer id;
+    private Integer user_id;
+    private Integer book_id;
+    private Integer quantity;
+
+    public Cart() {
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(Integer user_id) {
+        this.user_id = user_id;
+    }
+
+    public Integer getBook_id() {
+        return book_id;
+    }
+
+    public void setBook_id(Integer book_id) {
+        this.book_id = book_id;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
+
+    /*private Integer id;
 
     @ManyToOne
     @JoinColumn(name = "book_id")
@@ -49,5 +90,5 @@ public class Cart {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
-    }
+    }*/
 }

@@ -1,13 +1,12 @@
 package com.esprit.b8ks_web.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@Table(name="book_order")
 public class Order {
     @Id
     @GeneratedValue

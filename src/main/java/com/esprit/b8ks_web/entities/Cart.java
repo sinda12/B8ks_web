@@ -11,7 +11,7 @@ public class Cart {
     private Integer id;
     private Integer user_id;
     private Integer book_id;
-    private Integer quantity;
+    private Integer quantity=1;
 
     public Cart() {
     }

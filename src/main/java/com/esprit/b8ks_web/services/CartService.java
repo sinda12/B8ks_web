@@ -53,6 +53,10 @@ public class CartService implements ICartService{
 
     }
 
+    @Override
+    public Float TotalCart(int u) {
+        return cartRepo.TotalCart(u);
+    }
 
 
 }

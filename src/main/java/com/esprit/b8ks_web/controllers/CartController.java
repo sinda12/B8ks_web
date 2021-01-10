@@ -51,5 +51,10 @@ public class CartController {
         cartService.quantityM(u,b);
     }
 
+    @GetMapping("/totalCart")
+    public Float TotalCart() {
+        return cartService.TotalCart(u);
+    }
+
 
 }

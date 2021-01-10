@@ -15,6 +15,7 @@ public interface ICartService {
     public List<Cart> userCart(int user_id);
     public void quantityP(int u,int b);
     public void quantityM(int u,int b);
+    public Float TotalCart(int u);
 
 
 }

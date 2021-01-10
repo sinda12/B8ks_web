@@ -25,4 +25,7 @@ public interface CartRepo extends CrudRepository<Cart,Integer>,JpaRepository<Car
     @Transactional
     @Query("UPDATE Cart C SET C.quantity=(C.quantity-1) where C.user_id=?1 and C.book_id=?2")
     public void quantityM(int u,int b);
+    @Query("SELECT SUM(C.quantity) FROM Cart C where C.user_id=?1")
+    Float TotalCart(int u);
+
 }

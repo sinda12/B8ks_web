@@ -9,8 +9,8 @@
         <module name="b8ks_web" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="b8ks_web" target="11" />
+    <bytecodeTargetLevel target="8">
+      <module name="b8ks_web" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">

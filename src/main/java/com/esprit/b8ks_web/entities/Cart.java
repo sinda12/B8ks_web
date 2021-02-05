@@ -9,66 +9,19 @@ public class Cart {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     private Integer id;
-    private Integer user_id;
-    private Integer book_id;
     private Integer quantity=1;
+
+
+    @ManyToOne
+    private Book book;
+
+    @ManyToOne
+    private User user;
 
     public Cart() {
     }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Integer getUser_id() {
-        return user_id;
-    }
-
-    public void setUser_id(Integer user_id) {
-        this.user_id = user_id;
-    }
-
-    public Integer getBook_id() {
-        return book_id;
-    }
-
-    public void setBook_id(Integer book_id) {
-        this.book_id = book_id;
-    }
-
-    public Integer getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
-    }
-
-    /*private Integer id;
-
-    @ManyToOne
-    @JoinColumn(name = "book_id")
-    private Book book;
-
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
-
-    private int quantity;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Book getBook() {
+   public Book getBook() {
         return book;
     }
 
@@ -84,11 +37,21 @@ public class Cart {
         this.user = user;
     }
 
-    public int getQuantity() {
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+
+    public Integer getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
+    public void setQuantity(Integer quantity) {
         this.quantity = quantity;
-    }*/
+    }
+
 }

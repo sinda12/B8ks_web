@@ -13,4 +13,7 @@ public interface ClaimService {
     public List<Claim> findAll();
     public void deleteById(Long id);
     public List<Object[]> countTotalClaimsByDate();
+    public List<Object[]> countTotalClaimsByStatusHigh();
+    public List<Object[]> countTotalClaimsByStatusMedium();
+    public List<Object[]> countTotalClaimsByStatusLow();
 }

@@ -1,8 +1,7 @@
 package com.esprit.b8ks_web.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.CreationTimestamp;
-
+import com.esprit.b8ks_web.entities.User;
 import javax.persistence.*;
 import java.util.Date;
 
@@ -15,6 +14,9 @@ public class Claim {
     private String text;
     @CreationTimestamp
     private Date date;
+    private String status;
+    @ManyToOne
+    private static User user;
 
 
     public Long getId() {
@@ -33,5 +35,7 @@ public class Claim {
         this.text = text;
     }
 
-
+    public static String getUser() {
+        return user.getNom();
+    }
 }

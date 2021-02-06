@@ -35,4 +35,13 @@ public class ClaimServiceImpl implements ClaimService {
 
     @Override
     public List<Object[]> countTotalClaimsByDate(){ return claimRepo.countTotalClaimsByDate();}
+
+    @Override
+    public List<Object[]> countTotalClaimsByStatusHigh(){ return claimRepo.countTotalClaimsByStatusHigh();}
+
+    @Override
+    public List<Object[]> countTotalClaimsByStatusMedium(){ return claimRepo.countTotalClaimsByStatusMedium();}
+
+    @Override
+    public List<Object[]> countTotalClaimsByStatusLow(){ return claimRepo.countTotalClaimsByStatusLow();}
 }

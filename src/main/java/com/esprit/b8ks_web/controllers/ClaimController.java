@@ -44,4 +44,19 @@ public class ClaimController {
         return claimService.countTotalClaimsByDate();
 
     }
+
+    @GetMapping("/getclaimsbystatushigh")
+    public List<Object[]> countTotalClaimsByStatusHigh(){
+        return claimService.countTotalClaimsByStatusHigh();
+    };
+
+    @GetMapping("/getclaimsbystatusmedium")
+    public List<Object[]> countTotalClaimsByStatusMedium(){
+        return claimService.countTotalClaimsByStatusMedium();
+    };
+
+    @GetMapping("/getclaimsbystatuslow")
+    public List<Object[]> countTotalClaimsByStatusLow(){
+        return claimService.countTotalClaimsByStatusLow();
+    };
 }

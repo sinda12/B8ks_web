@@ -1,48 +1,41 @@
 package com.esprit.b8ks_web.services;
 
-
 import com.esprit.b8ks_web.entities.Book;
-import com.esprit.b8ks_web.repository.BookRepo;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-
 import java.util.List;
-import java.util.Optional;
 
 @Service
-public class BookService implements IBookService {
-@Autowired
-    BookRepo bookRepo;
-    @Override
-    public Book addBook(Book b) {
-        return bookRepo.save(b);
-    }
+public interface BookService {
+    public Book saveBook(Book b);
 
-    @Override
-    public List<Book> findAll() {
-        return bookRepo.findAll();
-    }
+    public List<Book> saveBooks(List<Book> books);
 
-    @Override
-    public Optional<Book> findById(int id) {
-        return bookRepo.findById(id);
-    }
+    public List<Book> getBooks(String string);
 
-    @Override
-    public Book deleteById(int id) {
-        return bookRepo.deleteById(id);
-    }
+    public List<Book> SortedByTitleA();
 
-    @Override
-    public Book updateBook(Book b, int id) {
+    public List<Book> SortedByTitleD();
 
-        return bookRepo.save(b);
-    }
+    public List<Book> SortedByPriceA();
 
+    public List<Book> SortedByPriceD();
+
+    public List<Book> FilteredByCat(String catL);
+
+    public List<Book> FilteredByLang(String langL);
+
+    public List<Book> FilteredByMinP(double minP);
+
+    public List<Book> FilteredByMaxP(double maxP);
+
+    public List<Book> FilteredByMinMaxP(double minP, double max);
+
+    public Book getBookById(long id);
+
+    public Book getBookByTitle(String title);
+
+    public String deleteBook(long id);
+
+    public String updateBook(Book b);
 
 }
-
-
-

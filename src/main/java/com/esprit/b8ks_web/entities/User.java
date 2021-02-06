@@ -10,7 +10,7 @@ import java.util.List;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id ;
+    private long id ;
     private int age;
     private String mobile;
     private String nom,prenom,adresse,email,password;
@@ -46,11 +46,11 @@ public class User {
       /*  this.orders = orders;*/
     }
 
-    public Integer getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(long id) {
         this.id = id;
     }
 

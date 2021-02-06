@@ -1,7 +1,7 @@
 package com.esprit.b8ks_web.controllers;
 
 import com.esprit.b8ks_web.entities.User;
-import com.esprit.b8ks_web.security.AccountServiceImpl;
+import com.esprit.b8ks_web.security.AccountService;
 import com.esprit.b8ks_web.services.IService;
 import com.esprit.b8ks_web.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,25 +11,25 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/rest/")
+@RequestMapping("/rest/user/")
 
 public class UserController implements IService<User> {
 
-
-    AccountServiceImpl userController1 = new AccountServiceImpl() ;
+@Autowired
+private AccountService accountServiceImpl ;
     @Autowired
-    UserService userController;
+ private    UserService userController;
 
 
 
-@PostMapping
+    @PostMapping("register/")
     @Override
     public void add(@RequestBody User p) {
-userController1.saveUser(p);
+    accountServiceImpl.saveUser(p);
     }
 
 
-@GetMapping
+@GetMapping("list/")
     @Override
     public List<User> getList() {
         return userController.getList();
@@ -39,14 +39,14 @@ userController1.saveUser(p);
 
 @DeleteMapping("{id}")
     @Override
-    public void delete(@PathVariable int id) {
+    public void delete(@PathVariable long id) {
 userController.delete(id);
     }
 
 
 @PutMapping
     @Override
-    public User modify(@RequestParam("p") User p) {
+    public User modify(@RequestBody User p) {
         return userController.modify(p);
     }
 
@@ -54,13 +54,18 @@ userController.delete(id);
 
 @GetMapping("{id}")
     @Override
-    public User findById(@PathVariable int id) {
+    public User findById(@PathVariable long id) {
         System.out.println("mchtttttt===="+id);
     return userController.findById(id);
     }
-
+    @GetMapping("mail/")
     @Override
-    public User findByEmail(String E) {
-        return null;
+    public User findByEmail(@RequestParam String E) {
+       return userController.findByEmail(E);
+    }
+    @GetMapping("role/")
+    @Override
+    public List<User> findUsersByRole(@RequestParam String E) {
+        return userController.findUsersByRole(E);
     }
 }

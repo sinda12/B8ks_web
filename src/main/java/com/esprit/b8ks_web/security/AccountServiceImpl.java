@@ -7,7 +7,13 @@ import com.esprit.b8ks_web.repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+
+
+@Service
+@Transactional
 public class AccountServiceImpl implements AccountService {
     @Autowired
     private UserRepo userRepository ;
@@ -20,11 +26,10 @@ public class AccountServiceImpl implements AccountService {
     public User saveUser(User user) {
         System.out.println("lowww");
         User us = userRepository.findUsersByEmail(user.getEmail());
-        System.out.println("lowwweeellll");
         if(us!=null) throw new RuntimeException("User already exist");
-        System.out.println("theeeniiiii");
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         System.out.println("theeeleethhhh");
+        System.out.println("lowww*****");
         userRepository.save(user);
         System.out.println("eeraaabaaaaaa");
         addRoleToUser(user.getEmail(),"USER");
@@ -40,7 +45,7 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public User loadUserByEmail(String email) {
-
+System.out.println("load userByemail");
         return userRepository.findUsersByEmail(email);
     }
 

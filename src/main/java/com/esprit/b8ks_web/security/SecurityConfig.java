@@ -13,9 +13,11 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private UserDetailsServiceImpl userDetailsService = new UserDetailsServiceImpl() ;
+    @Autowired
+    private UserDetailsServiceImpl userDetailsService ;
 
-    private BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
 
     @Override
@@ -28,8 +30,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-        http.authorizeRequests().antMatchers("/rest/products/**", "/rest/categories/**").permitAll();
-        http.authorizeRequests().antMatchers("/login/**", "/rest/register/**","/rest/contact").permitAll();
+        http.authorizeRequests().antMatchers("/rest/user/register/**","/login/**").permitAll();
          http.authorizeRequests().anyRequest().authenticated();
         System.out.println("un");
         http.addFilter(new JWTAuthenticationFilter(authenticationManager()));

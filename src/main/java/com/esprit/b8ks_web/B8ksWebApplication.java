@@ -11,6 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @SpringBootApplication
 
@@ -24,7 +25,12 @@ public class B8ksWebApplication {
 
 
     }
-@Bean
+    @Bean
+    BCryptPasswordEncoder getBCPE ()
+    {
+        return new BCryptPasswordEncoder() ;
+    }
+/*@Bean
     CommandLineRunner start(UserController userService) {
         return args -> {
 
@@ -39,5 +45,5 @@ user4.setId(3);
             userService.add(user3);
             userService.modify(user4);
         };
-    }
+    }*/
 }

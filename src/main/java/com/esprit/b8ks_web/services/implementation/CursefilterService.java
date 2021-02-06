@@ -12,6 +12,7 @@ public class CursefilterService {
     static Map<String, String[]> words = new HashMap<>();
 
     static int largestWordLength = 0;
+    public static String txt;
 
     public static void loadConfigs() {
         try {
@@ -58,16 +59,7 @@ public class CursefilterService {
         }
 
 
-        input = input.replaceAll("1","i");
-        input = input.replaceAll("!","i");
-        input = input.replaceAll("3","e");
-        input = input.replaceAll("4","a");
-        input = input.replaceAll("@","a");
-        input = input.replaceAll("5","s");
-        input = input.replaceAll("7","t");
-        input = input.replaceAll("0","o");
-        input = input.replaceAll("9","g");
-        input = input.replaceAll("\\$","s");
+        input = reformat(input);
 
         System.out.println(input);
         ArrayList<String> badWords = new ArrayList<>();
@@ -103,11 +95,50 @@ public class CursefilterService {
 
     }
 
+    private static String reformat(String input) {
+        input = input.replaceAll("1","i");
+        input = input.replaceAll("!","i");
+        input = input.replaceAll("3","e");
+        input = input.replaceAll("4","a");
+        input = input.replaceAll("@","a");
+        input = input.replaceAll("5","s");
+        input = input.replaceAll("7","t");
+        input = input.replaceAll("0","o");
+        input = input.replaceAll("9","g");
+        input = input.replaceAll("\\$","s");
+        return input;
+    }
+
     public static String filterText(String input, String username) {
         ArrayList<String> badWords = badWordsFound(input);
         if(badWords.size() > 0) {
             return "This message was blocked because a bad word was found. If you believe this word should not be blocked, please message support.";
         }
         return input;
+    }
+
+    public static String cleanText(String text){
+        loadConfigs();
+        ArrayList<String > badwords =  badWordsFound(text);
+
+        text = reformat(text);
+        setTxt(text);
+        badwords.forEach(bw -> {
+            StringBuilder sb = new StringBuilder();
+            for(int c = 0; c<bw.length(); c++){
+                sb.append("*");
+            }
+
+          setTxt(getTxt().replace(bw, sb.toString()));
+        });
+        return getTxt();
+    }
+
+    public static String getTxt() {
+        return txt;
+    }
+
+    public static void setTxt(String txt) {
+        CursefilterService.txt = txt;
     }
 }

@@ -5,6 +5,7 @@ import com.esprit.b8ks_web.services.IBlogService;
 import com.esprit.b8ks_web.services.implementation.CursefilterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +16,8 @@ public class BlogController {
     @Autowired
     IBlogService blogService;
 
+
+
     @GetMapping
     public List<Blog> findAll(){
         return blogService.findAll();
@@ -22,27 +25,7 @@ public class BlogController {
     @PostMapping
     public Blog save(@RequestBody Blog blog){
 //        CursefilterService.filterText(blog.getText(),"");
-        CursefilterService.loadConfigs();
-        ArrayList<String > badwords =  CursefilterService.badWordsFound(blog.getText());
-        String text = blog.getText();
-       blog.setText(blog.getText().replaceAll("1","i"));
-       blog.setText(blog.getText().replaceAll("!","i"));
-       blog.setText(blog.getText().replaceAll("3","e"));
-       blog.setText(blog.getText().replaceAll("4","a"));
-       blog.setText(blog.getText().replaceAll("@","a"));
-       blog.setText(blog.getText().replaceAll("5","s"));
-       blog.setText(blog.getText().replaceAll("7","t"));
-       blog.setText(blog.getText().replaceAll("0","o"));
-       blog.setText(blog.getText().replaceAll("9","g"));
-       blog.setText(blog.getText().replaceAll("\\$","s"));
-        badwords.forEach(bw -> {
-            StringBuilder sb = new StringBuilder();
-            for(int c = 0; c<bw.length(); c++){
-                sb.append("*");
-            }
 
-            blog.setText(blog.getText().replace(bw, sb.toString()));
-        });
         return blogService.save(blog);
     }
 
@@ -61,4 +44,10 @@ public class BlogController {
         blogService.deleteById(id);
     }
 
+    @GetMapping("report/{id}")
+    public Blog report(@PathVariable Long id){
+        Blog b = blogService.findById(id);
+        b.setReport(b.getReport() + 1);
+        return blogService.save(b);
+    }
 }

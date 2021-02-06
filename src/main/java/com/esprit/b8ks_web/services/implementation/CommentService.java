@@ -14,6 +14,8 @@ public class CommentService implements ICommentService {
     CommentRepository commentRepository;
     @Override
     public Comment save(Comment comment) {
+        comment.setText(CursefilterService.cleanText(comment.getText()));
+
         return commentRepository.save(comment);
     }
 

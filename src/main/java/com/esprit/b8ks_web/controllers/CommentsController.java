@@ -49,5 +49,11 @@ public class CommentsController {
         return commentsService.showCommentsforBooks();
     }*/
 
+    @GetMapping("/getcommentsbyrate")
+    public List<Object[]> OrderTotalCommentsByRate() {
+        return commentsService.orderTotalCommentsByRate();
+    }
+
+
 
 }

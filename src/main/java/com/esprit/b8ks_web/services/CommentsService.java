@@ -13,4 +13,5 @@ public interface CommentsService {
     public void deleteById(Long id);
     public List<Object[]> countTotalCommentsByYear();
    // public List<Object[]> showCommentsforBooks();
+   public List<Object[]> orderTotalCommentsByRate();
 }

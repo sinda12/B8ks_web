@@ -39,5 +39,9 @@ public class CommentsServiceImpl implements CommentsService {
     /*@Override
     public List<Object[]> showCommentsforBooks() { return commentsRepo.showCommentsforBooks(); }*/
 
+    @Override
+    public List<Object[]> orderTotalCommentsByRate() { return commentsRepo.orderTotalCommentsByRate(); }
+
+
 
 }

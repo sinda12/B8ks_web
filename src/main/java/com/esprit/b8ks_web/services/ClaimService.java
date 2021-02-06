@@ -12,4 +12,5 @@ public interface ClaimService {
     public Claim findById(Long id);
     public List<Claim> findAll();
     public void deleteById(Long id);
+    public List<Object[]> countTotalClaimsByDate();
 }

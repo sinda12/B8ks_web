@@ -38,4 +38,10 @@ public class ClaimController {
     public void deleteById(@PathVariable("id") Long id) {
         claimService.deleteById(id);
     }
+
+   @GetMapping("/getclaimsbydate")
+    public List<Object[]> countTotalCommentsByYear() {
+        return claimService.countTotalClaimsByDate();
+
+    }
 }

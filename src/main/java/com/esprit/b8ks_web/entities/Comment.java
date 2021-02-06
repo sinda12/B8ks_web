@@ -1,21 +1,21 @@
 package com.esprit.b8ks_web.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import org.hibernate.annotations.CreationTimestamp;
 
-import javax.persistence.*;
-import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
-@Table(name="claims")
-public class Claim {
+public class Comment {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private Long id;
     private String text;
-    @CreationTimestamp
-    private Date date;
-
+    @ManyToOne
+    @JsonIgnoreProperties("comments")
+    private Blog blog;
 
     public Long getId() {
         return id;
@@ -33,5 +33,11 @@ public class Claim {
         this.text = text;
     }
 
+    public Blog getBlog() {
+        return blog;
+    }
 
+    public void setBlog(Blog blog) {
+        this.blog = blog;
+    }
 }

@@ -13,9 +13,10 @@ public class Comments {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String text;
-   // private static User user;
+    private static User user;
    @CreationTimestamp
    private Date date;
+   private int rate;
 
 
 
@@ -43,7 +44,7 @@ public class Comments {
         this.text = text;
     }
 
-
-
-
+    public static String getUser() {
+        return user.getNom();
+    }
 }

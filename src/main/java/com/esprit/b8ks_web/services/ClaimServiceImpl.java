@@ -32,4 +32,7 @@ public class ClaimServiceImpl implements ClaimService {
     public void deleteById(Long id) {
         claimRepo.deleteById(id);
     }
+
+    @Override
+    public List<Object[]> countTotalClaimsByDate(){ return claimRepo.countTotalClaimsByDate();}
 }
